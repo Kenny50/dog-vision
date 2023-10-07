@@ -1,0 +1,1 @@
+icon is made by <a href="https://www.flaticon.com/free-icons/wild-life" title="wild life icons">Wild life icons created by Alfian Dwi Hartanto - Flaticon</a>
