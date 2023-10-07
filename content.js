@@ -25,20 +25,45 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         true,  // Example: Apply decreased brightness discrimination effect
         true      // Example: Set the factor to reduce visual acuity
       );
-
-      // Convert the modified image data to a format that can be serialized
-      const serializedImageData = serializeImageData(modifiedImageData);
-        // Send the serialized image data back to the extension popup
-      chrome.runtime.sendMessage({ action: "showDogVisionImage", imageData: serializedImageData });
+      findOrCreateDialog(modifiedImageData);
     }
   }
 });
 
-// Function to serialize ImageData to an array of pixel values
-function serializeImageData(imageData) {
-  return {
-    width: imageData.width,
-    height: imageData.height,
-    data: Array.from(imageData.data),
-  };
+
+function findOrCreateDialog(imageData) {
+  let dialog = document.getElementById("dogVisionDialog");
+
+  if (!dialog) {
+    // Create a new dialog if it doesn't exist
+    dialog = document.createElement("div");
+    dialog.id = "dogVisionDialog";
+    dialog.style.position = "fixed";
+    dialog.style.top = "0";
+    dialog.style.left = "0";
+    dialog.style.width = "100%";
+    dialog.style.height = "100%";
+    dialog.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+    dialog.style.display = "flex";
+    dialog.style.justifyContent = "center";
+    dialog.style.alignItems = "center";
+    dialog.style.zIndex = "9999";
+    document.body.appendChild(dialog);
+  } else {
+    // Clear the existing content
+    dialog.innerHTML = "";
+  }
+
+  const canvasInDialog = document.createElement("canvas");
+  canvasInDialog.width = imageData.width;
+  canvasInDialog.height = imageData.height;
+  const ctxInDialog = canvasInDialog.getContext("2d");
+  ctxInDialog.putImageData(imageData, 0, 0);
+
+  dialog.appendChild(canvasInDialog);
+
+  // Close the dialog when clicking anywhere on it
+  dialog.addEventListener("click", function () {
+    document.body.removeChild(dialog);
+  });
 }

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Dog Vision Simulator</title>
 </head>
 <body>
     <h1>Dog Vision Simulator</h1>
-    <img id="dogVisionImage" src="" alt="Dog Vision Image">
-    <script src="popup.js"></script>
+    <input type="file" id="imageInput" accept="image/*">
+    <br>
+    <canvas id="originalCanvas" width="400" height="300"></canvas>
+
+    <script src="dogVision.js"></script>
+    <script src="fileReader.js"></script>
 </body>
 </html>
+
