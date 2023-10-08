@@ -1,1 +1,3 @@
+Dog vision simulate is inspired by [András Péter](https://dog-vision.andraspeter.com/), thanks for his amazing contributions. He describes technique detail to convert the image to dog vision, i re-implements the algorithm base on his articles.
+
 icon is made by <a href="https://www.flaticon.com/free-icons/wild-life" title="wild life icons">Wild life icons created by Alfian Dwi Hartanto - Flaticon</a>
