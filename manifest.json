@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Dog Vision Simulator",
-  "version": "1.0",
-  "description": "Simulate dog vision for online shopping",
+  "version": "0.0.1",
+  "description": "Simulate dog vision for image",
   "permissions": ["activeTab", "contextMenus"],
   "icons": {
     "16": "icons/icon16.png",
